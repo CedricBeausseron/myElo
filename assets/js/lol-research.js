@@ -3,7 +3,7 @@ console.log('lol-research')
 let apiKey;
 
 if(window.location.href.includes("https://cedricbeausseron.github.io/myElo")) {//github
-    apiKey = "";
+    apiKey = "RGAPI-ba0b5a8e-22ea-43dd-b0e4-ee1f50998e26";//a changer : correspond à celle ttes les 24h
 }else if(window.location.href.includes("https://myelo.herokuapp.com/")){//heroku
     apiKey = "RGAPI-f30b5d4d-9697-4ab3-bd3b-e1c7d5e607af";  
 }else{//local, change toutes les 24h
