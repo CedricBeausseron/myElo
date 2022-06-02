@@ -3,11 +3,11 @@ console.log('lol-research')
 let apiKey;
 
 if(window.location.href.includes("https://cedricbeausseron.github.io/myElo")) {//github
-    apiKey = "RGAPI-ba0b5a8e-22ea-43dd-b0e4-ee1f50998e26";//a changer : correspond à celle ttes les 24h
+    apiKey = "RGAPI-69b41414-f409-49e0-8512-4ba421a3c6e9";//a changer : correspond à celle ttes les 24h
 }else if(window.location.href.includes("https://myelo.herokuapp.com/")){//heroku
     apiKey = "RGAPI-f30b5d4d-9697-4ab3-bd3b-e1c7d5e607af";  
 }else{//local, change toutes les 24h
-    apiKey = "RGAPI-ba0b5a8e-22ea-43dd-b0e4-ee1f50998e26";  
+    apiKey = "RGAPI-69b41414-f409-49e0-8512-4ba421a3c6e9";  
 }
 
 //voir pour utiliser async et await
@@ -18,6 +18,40 @@ getLoLUserByPseudo = async (pseudo) =>{
     let response = await fetch('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+pseudo+'?api_key='+apiKey)
     return await response.json();
 }
+
+function callLoLChampionsMasteries(/*lol_profile_section,*/ encrypted_summoner_id){
+    //champiosn masteries
+    fetch('https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/'+encrypted_summoner_id+'?api_key='+api_key)
+    .then(result => result.json())
+    .then((output) => {
+        console.log(output)
+        console.log(output[0]['championId']+" "+output[1]['championId']+" "+output[2]['championId']);
+        let answer = [];
+        if(lol_champions_list){
+            //doit deja etre array avant de chercher dedans
+            for(let i in lol_champions_list){
+                // console.log(lol_champions_list[i]['key'])
+                if( lol_champions_list[i]['key'] == output[0]['championId'] ||
+                    lol_champions_list[i]['key'] == output[1]['championId'] ||
+                    lol_champions_list[i]['key'] == output[2]['championId'] 
+                ){
+                    answer.push(lol_champions_list[i])
+                }
+            }
+            console.log(answer)
+            // let lol_main_champions_section = (lol_profile_section.getElementsByClassName('main-champion'))
+            // for (let pas = 0; pas < 3; pas++) {
+            //     lol_main_champions_section[pas].getElementsByClassName('champion-name')[0].innerHTML = answer[pas]['name'];
+            //     lol_main_champions_section[pas].getElementsByTagName("img")[0].src = "apis/riot/dragontail-11.19.1/img/champion/tiles/"+answer[pas]['id']+"_0.jpg"
+            //     lol_main_champions_section[pas].getElementsByClassName('mastery-level')[0].innerHTML = "mastery "+output[pas]['championLevel'];
+            //     lol_main_champions_section[pas].getElementsByClassName('mastery-points')[0].innerHTML = output[pas]['championPoints']+" points";
+            // }
+        }
+    }).catch(function(error) {
+        console.error("erreur : "+error)
+    });
+}
+
 
 //EVENTS
 let searching = false;
@@ -30,6 +64,7 @@ document.getElementById('input-search').addEventListener('input', (event) => {
                 console.log('nouvelle recherche')
                 getLoLUserByPseudo(e.value).then(lolUser => {
                     console.log(lolUser)
+                    callLoLChampionsMasteries(lolUser.id)
                 })
                 // document.getElementById('loader-search').classList.remove('invisible');
             }else{
@@ -119,6 +154,10 @@ document.getElementById('input-search').addEventListener('input', (event) => {
 //         console.error("erreur : "+ error)
 //     });
 // }
+
+
+
+
 
 
 
