@@ -21,7 +21,7 @@ getLoLUserByPseudo = async (pseudo) =>{
 
 function callLoLChampionsMasteries(/*lol_profile_section,*/ encrypted_summoner_id){
     //champiosn masteries
-    fetch('https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/'+encrypted_summoner_id+'?api_key='+api_key)
+    fetch('https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/'+encrypted_summoner_id+'?api_key='+apiKey)
     .then(result => result.json())
     .then((output) => {
         console.log(output)
