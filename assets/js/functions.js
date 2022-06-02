@@ -5,6 +5,25 @@ if(! window.location.href.includes("https://cedricbeausseron.github.io/myElo")) 
     rootPath = "myElo/"
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //appeler une fonction par son nom en string
 function executeFunctionByName(functionName, context /*, args */) {
     var args = Array.prototype.slice.call(arguments, 2);
