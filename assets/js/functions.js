@@ -2,7 +2,7 @@ let rootPath
 if(! window.location.href.includes("https://cedricbeausseron.github.io/myElo")) {
     rootPath = "nophp/myElo/"
 }else{
-    rootPath = "https://cedricbeausseron.github.io/myElo/"
+    rootPath = "myElo/"
 }
 
 //appeler une fonction par son nom en string
