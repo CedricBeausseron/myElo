@@ -1,3 +1,7 @@
 .test{
-    /* color:blue; */
+    color:blue;
+}
+
+#loader-search{
+    width:38px;
 }
