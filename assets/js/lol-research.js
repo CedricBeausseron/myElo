@@ -58,24 +58,24 @@ document.getElementById('input-search').addEventListener('input', (event) => {
 
 
 
-mdn = async (nb, pseudo) => {
-    fetch('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+pseudo+'?api_key='+apiKey)
-    .then(function(response) {
-        if(response.ok) {
-          response.blob().then(function(myBlob) {
-              console.log(myBlob)
-          });
-        } else {
-          console.log('Mauvaise réponse du réseau');
-        }
-    })
-    .catch(function(error) {
-        console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
-    });    
-}
-console.log("mdn")
-mdn("3", "Lepti")
-mdn("4", "zzerftgytrfgytrfgtrdfgfvgfgthjuioiuy")
+// mdn = async (nb, pseudo) => {
+//     fetch('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+pseudo+'?api_key='+apiKey)
+//     .then(function(response) {
+//         if(response.ok) {
+//           response.blob().then(function(myBlob) {
+//               console.log(myBlob)
+//           });
+//         } else {
+//           console.log('Mauvaise réponse du réseau');
+//         }
+//     })
+//     .catch(function(error) {
+//         console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+//     });    
+// }
+// console.log("mdn")
+// mdn("3", "Lepti")
+// mdn("4", "zzerftgytrfgytrfgtrdfgfvgfgthjuioiuy")
 
 // async function fetchMovies404(pseudo) {
 //     const response = await fetch('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+pseudo+'?api_key='+apiKey);
